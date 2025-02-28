@@ -1,0 +1,39 @@
+---
+description: python styleÏ
+globs: *.py, *.ipynb
+---
+# code Style
+
+- use python 3.12 or above
+- all function must be type hinted
+- use latest type hints syntax, eg.
+  - `list[int]` instead of `List[int]`
+  - `dict[str, int]` instead of `Dict[str, int]`
+  - `tuple[int, ...]` instead of `Tuple[int, ...]`
+  - `A | B` instead of `Union[A, B]`
+  - use `typing.Self` instead of forward reference string "ClassName"
+
+# Docstrings Style
+
+- use Google style docstrings
+- don't write type hints in docstrings
+- refer to the following example:
+
+```python
+def sample_function(param1: int, param2: str) -> bool:
+"""
+Example function with PEP 484 type annotations.
+
+Args:
+    param1: The first parameter.
+    param2: The second parameter.
+
+Returns:
+    The return value. True for success, False otherwise.
+"""
+```
+
+# Testing
+
+- use pytest instead of unittest
+- put all tests in the `./tests` folder

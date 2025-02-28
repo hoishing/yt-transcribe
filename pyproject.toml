@@ -1,0 +1,14 @@
+[project]
+name = "yt-transcript-extract-transcribe"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "ipykernel>=6.29.5",
+    "moviepy>=2.1.2",
+    "openai>=1.65.1",
+    "pytubefix>=8.12.2",
+    "youtube-transcript-api>=0.6.3",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3.4"]
