@@ -1,4 +1,5 @@
 from urllib.parse import parse_qs, urlparse
+from youtube_transcript_api import Transcript, YouTubeTranscriptApi
 
 
 def extract_yt_id(youtube_url):
@@ -38,3 +39,24 @@ def extract_yt_id(youtube_url):
     except Exception:
         return None
     return None
+
+
+def list_available_languages(url: str) -> list[str]:
+    """
+    Lists all available languages for a given YouTube video.
+
+    Args:
+        url (str): The URL of the YouTube video.
+
+    Returns:
+        list[str]: A list of available languages.
+    """
+    video_id = extract_yt_id(url)
+    return [
+        transcript.language_code
+        for transcript in YouTubeTranscriptApi.list_transcripts(video_id)
+    ]
+
+
+if __name__ == "__main__":
+    print(list_available_languages("https://www.youtube.com/watch?v=dQw4w9WgXcQ"))

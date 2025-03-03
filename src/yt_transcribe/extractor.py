@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass, field
 from typing import Literal
-from utils import extract_yt_id
+from yt_transcribe.utils import extract_yt_id
 from youtube_transcript_api import Transcript, YouTubeTranscriptApi
 from youtube_transcript_api.formatters import (
     SRTFormatter,

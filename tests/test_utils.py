@@ -1,5 +1,6 @@
 import pytest
-from utils import extract_yt_id
+from youtube_transcript_api import TranscriptsDisabled
+from yt_transcribe.utils import extract_yt_id, list_available_languages
 
 
 @pytest.mark.parametrize(
@@ -21,3 +22,14 @@ from utils import extract_yt_id
 )
 def test_extract_yt_id(url: str, expected_id: str | None) -> None:
     assert extract_yt_id(url) == expected_id
+
+
+def test_list_available_languages() -> None:
+    url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    assert list_available_languages(url) == ["en"]
+
+
+def test_list_available_languages_no_transcript() -> None:
+    url = "https://youtu.be/wE9rpaXtKuc?si=91TL0mjMOTcWEWBO"
+    with pytest.raises(TranscriptsDisabled):
+        list_available_languages(url)

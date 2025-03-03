@@ -1,5 +1,5 @@
 import pytest
-from extractor import Extractor
+from yt_transcribe.extractor import Extractor
 from youtube_transcript_api import NoTranscriptFound, TranscriptsDisabled
 
 

@@ -8,13 +8,15 @@
 ## Installation
 
 ```bash
-pip install yt-transcript-extract-transcribe
+pip install yt-transcribe
 ```
+
+Put your `GROQ_API_KEY` in `.env`
 
 ## Usage
 
 ```python
-from yt_transcript_extract_transcribe import Extractor, Transcriber
+from yt_transcribe import Extractor, Transcriber
 
 # video with transcript
 extractor = Extractor(url="https://www.youtube.com/watch?v=dQw4w9WgXcQ")

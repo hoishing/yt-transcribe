@@ -1,5 +1,5 @@
 import pytest
-from transcriber import Transcriber
+from yt_transcribe.transcriber import Transcriber
 
 
 @pytest.fixture
@@ -8,4 +8,4 @@ def transcriber():
 
 
 def test_transcriber(transcriber: Transcriber):
-    assert "通訊軟體" in transcriber.transcript
+    assert "通訊軟體" in transcriber.transcript(lang="zh")
