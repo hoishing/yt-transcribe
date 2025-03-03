@@ -13,6 +13,7 @@ dotenv.load_dotenv()
 @dataclass
 class Transcriber:
     url: str
+    lang: str | None = None
     video_id: str = field(init=False)
     yt: YouTube = field(init=False)
 
@@ -25,7 +26,8 @@ class Transcriber:
         streams = self.yt.streams
         return streams.get_audio_only()
 
-    def transcript(self, lang: str | None = None) -> str:
+    @property
+    def transcript(self) -> str:
         """
         Transcribe the audio of the YouTube video.
 
@@ -46,8 +48,8 @@ class Transcriber:
             response_format="verbose_json",
             temperature=0.0,
         )
-        if lang is not None:
-            params["language"] = lang
+        if self.lang is not None:
+            params["language"] = self.lang
         transcription = client.audio.transcriptions.create(**params)
 
         return "\n".join(segment["text"] for segment in transcription.segments)
