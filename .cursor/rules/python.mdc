@@ -1,6 +1,6 @@
 ---
-description: python styleÏ
-globs: *.py, *.ipynb
+description: python style
+globs: **/*.py, **/*.ipynb
 ---
 # code Style
 

@@ -3,6 +3,7 @@
 import dotenv
 import os
 from dataclasses import dataclass, field
+from functools import cached_property
 from groq import Groq
 from pytubefix import Buffer, YouTube
 from yt_transcribe.utils import extract_yt_id
@@ -26,7 +27,7 @@ class Transcriber:
         streams = self.yt.streams
         return streams.get_audio_only()
 
-    @property
+    @cached_property
     def transcript(self) -> str:
         """
         Transcribe the audio of the YouTube video.

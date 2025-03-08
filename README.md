@@ -25,8 +25,8 @@ list_available_languages("https://www.youtube.com/watch?v=dQw4w9WgXcQ") # ["en"]
 list_available_languages("https://youtube.com/shorts/NbY29sW7gbU?si=EJpsZdXvUArCIBr3") # raise
 
 # video with transcript
-extractor = Extractor(url="https://www.youtube.com/watch?v=dQw4w9WgXcQ")
-print(extractor.transcript)
+extractor = Extractor(url="https://www.youtube.com/watch?v=dQw4w9WgXcQ", lang="en")
+print(extractor.formatted_transcript(format="srt"))  # format: srt, txt, webvtt
 
 # video without transcript, use whisper to transcribe
 transcriber = Transcriber(url="https://youtube.com/shorts/NbY29sW7gbU?si=EJpsZdXvUArCIBr3")

@@ -1,6 +1,7 @@
 """extract transcript from video"""
 
 from dataclasses import dataclass, field
+from functools import cached_property
 from typing import Literal
 from yt_transcribe.utils import extract_yt_id
 from youtube_transcript_api import Transcript, YouTubeTranscriptApi
@@ -24,7 +25,7 @@ class Extractor:
     def transcript(self) -> Transcript:
         return YouTubeTranscriptApi.get_transcript(self.video_id, languages=[self.lang])
 
-    @property
+    @cached_property
     def available_langs(self) -> list[str]:
         transcript_list = YouTubeTranscriptApi.list_transcripts(self.video_id)
         return [transcript.language_code for transcript in transcript_list]
